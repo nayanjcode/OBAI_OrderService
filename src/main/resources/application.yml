@@ -11,8 +11,8 @@ spring:
   # database configs
   datasource:
     url: jdbc:mysql://localhost:3306/ObviousAI
-    username: root
-    password: root
+    username: allego
+    password: allego
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   # jpa properties
@@ -25,9 +25,16 @@ spring:
         # To give the table name and column names as variable name by default. It was taking some other defaults
         physical_naming_strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
 
-  # Config server
+# Config server
   config:
     import: optional:configserver:http://localhost:8091
+# Security configs for okta to access token
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: https://dev-93131137.okta.com/oauth2/default
+  #          jwk-set-uri: https://your-issuer.com/.well-known/jwks.json # Optional if issuer-uri resolves this
 
 # Eureka service discovery/registry configs - Now moved to config server
 #eureka:

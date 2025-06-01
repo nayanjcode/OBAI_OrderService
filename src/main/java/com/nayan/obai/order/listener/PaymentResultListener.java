@@ -11,9 +11,9 @@ import org.springframework.stereotype.Component;
 @Component
 public class PaymentResultListener
 {
-	OrderService orderService;
+	private OrderService orderService;
 
-	public PaymentResultListener(OrderService orderService) {
+	public PaymentResultListener(final OrderService orderService) {
 		this.orderService = orderService;
 	}
 
