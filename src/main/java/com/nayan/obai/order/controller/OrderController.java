@@ -32,7 +32,7 @@ public class OrderController
 	}
 
 	@GetMapping("/{orderId}")
-	@PreAuthorize("hasRole('ADMIN')")
+	@PreAuthorize("hasAuthority('SCOPE_internal') || hasRole('ADMIN')")
 	ResponseEntity<Order> getOrder(@PathVariable UUID orderId)
 	{
 		final Order order = orderService.getOrder(orderId);
@@ -40,7 +40,7 @@ public class OrderController
 	}
 
 	@GetMapping("/")
-	@PreAuthorize("hasRole('REGULAR_USERS')")
+	@PreAuthorize("hasAuthority('SCOPE_internal') || hasRole('REGULAR_USERS')")
 	ResponseEntity<List<Order>> getOrders()
 	{
 		final List<Order> orders = orderService.getAllOrders();
